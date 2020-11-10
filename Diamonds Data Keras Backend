@@ -23,3 +23,10 @@ df.clarity = df.clarity.cat.codes
 df = df.dropna()
 
 df.head()
+
+#Making my X and y variables for later training/testing/splitting
+X = df[features]
+y = np.ravel(df[target])
+
+#Training and testing data split
+X_trainval, X_test, y_trainval, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
