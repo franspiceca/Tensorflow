@@ -82,3 +82,16 @@ valid_dataset = tf.data.Dataset.from_tensor_slices((X_valid.values, y_valid))
 test_dataset = tf.data.Dataset.from_tensor_slices((X_test.values, y_test))
 
 x_new_dataset = tf.data.Dataset.from_tensor_slices((X_new.values, [0,0,0]))
+
+#Displaying features and target data
+for feat, targ in test_dataset.take(5):
+  print ('Features: {}, Target: {}'.format(feat, targ))
+
+#Setting batch size with data
+batch_size = 1
+
+train_dataset = train_dataset.shuffle(len(X_train)).batch(batch_size)
+valid_dataset = valid_dataset.shuffle(len(X_valid)).batch(batch_size)
+test_dataset = test_dataset.shuffle(len(X_test)).batch(batch_size)
+
+x_new_dataset = x_new_dataset.batch(batch_size)
