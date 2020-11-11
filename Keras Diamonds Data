@@ -34,3 +34,41 @@ X_trainval, X_test, y_trainval, y_test = train_test_split(X, y, test_size=0.2, r
 
 #Validation data set up
 X_train, X_valid, y_train, y_valid = train_test_split(X_trainval, y_trainval, test_size=0.2, random_state=1)
+
+#Setting up data to test against (new diamond inputs)
+diamond1 = {"carat": 0.25, 
+           "cut": 2,
+           "color": 5,
+           "clarity": 1,
+           "depth": 62.6,
+           "table": 58,
+           "x": 3.93,
+           "y": 4.07,
+           "z": 2.73}
+
+diamond2 = {"carat": 0.30, 
+           "cut": 3,
+           "color": 4,
+           "clarity": 1,
+           "depth": 63.7,
+           "table": 59,
+           "x": 3.97,
+           "y": 4.00,
+           "z": 2.78}
+
+diamond3 = {"carat": 0.21, 
+           "cut": 2,
+           "color": 4,
+           "clarity": 2,
+           "depth": 61.6,
+           "table": 56,
+           "x": 3.73,
+           "y": 3.97,
+           "z": 2.78}
+
+#Setting up new diamonds list with diamonds above
+X_new = [] 
+for diamond in [diamond1, diamond2, diamond3]:
+    new_diamond = [diamond["carat"], diamond["cut"], diamond["color"], diamond["clarity"], diamond["depth"], 
+                   diamond["table"], diamond["x"], diamond["y"], diamond["z"]]
+    X_new.append(new_diamond)
