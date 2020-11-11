@@ -72,3 +72,13 @@ for diamond in [diamond1, diamond2, diamond3]:
     new_diamond = [diamond["carat"], diamond["cut"], diamond["color"], diamond["clarity"], diamond["depth"], 
                    diamond["table"], diamond["x"], diamond["y"], diamond["z"]]
     X_new.append(new_diamond)
+
+#Making new diamonds a dataframe
+X_new = pd.DataFrame(data=X_new, columns = X_train.columns)
+
+#Train, test and validation data to slice
+train_dataset = tf.data.Dataset.from_tensor_slices((X_train.values, y_train))
+valid_dataset = tf.data.Dataset.from_tensor_slices((X_valid.values, y_valid))
+test_dataset = tf.data.Dataset.from_tensor_slices((X_test.values, y_test))
+
+x_new_dataset = tf.data.Dataset.from_tensor_slices((X_new.values, [0,0,0]))
