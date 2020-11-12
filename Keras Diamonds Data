@@ -112,3 +112,9 @@ model.compile(loss='binary_crossentropy',
 
 #Fitting thr model
 model.fit(train_dataset,epochs=5, validation_data= valid_dataset)
+
+#Evaluating the model
+model.evaluate(x=test_dataset)
+
+#Predicting with the model and data set I gave it
+model.predict(x_new_dataset)
